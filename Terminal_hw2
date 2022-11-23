@@ -1,0 +1,192 @@
+/Course QA$ mkdir dir_1								1. Сделать папку dir_1
+/Course QA$ cd dir_1/									2. Зайти в папку dir_1
+~/Course QA/dir_1$ mkdir inner_dir_1							3. Создать папку inner_dir_1
+~/Course QA/dir_1$ pwd									4. Посмотреть где ты находишься
+/home/karina/Course QA/dir_1	
+/Course QA/dir_1$ touch tf_1.txt							5. Находясь в папке dir_1 создать пустой текстовый файл tf_1.txt
+
+/Course QA/dir_1$ cat > tf_2.txt							6. Находясь в папке dir_1 через команду cat создать текстовый файл tf_2.txt со следующими строками:
+- the first 1
+- the second 2
+- the third 3
+^C
+
+/Course QA/dir_1$ cd inner_dir_1/							7. Зайти в папку inner_dir_1
+~/Course QA/dir_1/inner_dir_1$ cat >tf_3.txt						8. Через cat сделать текстовый файл tf_3.txt  c любыми строками
+qwer
+asd
+zcxc
+cxz
+^C
+
+cat >> tf_3.txt									9. Через cat добавить в текстовый файл tf_3.txt строку “the second 2”
+the second 2										
+the sec 2										10.Через cat добавить в текстовый файл tf_3.txt строку “the sec 2”
+the SeCoNd 2										Через cat добавить в текстовый файл tf_3.txt строку “the SeCoNd 2
+^C
+cd ..
+~/Course QA/dir_1$ cat >> tf_2.txt							11. Через cat добавить в текстовый файл tf_2.txt строку “the sec 3”
+the sec 3 
+he seConD 2										13. Через cat добавить в текстовый файл tf_2.txt строку “the seConD 2”
+^C
+
+сat > tf_4.txt										14. Сделать текстовый файл tf_4.txt в котором будет 15 строк.								
+Da-Dance with you, get on the back of you
+Da-Dance, dance, dance
+Awesome
+Oh-ee, oh-ee, oh
+Oh-ee, oh-ee, oh
+Hey-oh, hey-oh
+Hey-oh, hey-oh
+Uh-ah-ba-bo
+Uh-ah-ba-bo
+Zib-oh-da-we-bab-ba-dap-bop-bop
+Zib-oh-da-we-bab-ba-dap-bop-bop
+And we danced and we cried
+And we laughed and had a really, really, really good time
+Take my hand, let's have a blast
+And remember this moment for the rest of our lives
+^C
+
+cat > tf_5.txt										 15. Сделать текстовый файл tF_5.txt в котором будет 13 строк.
+And we danced 
+ and we cried
+And we laughed 
+and had a really, really, really good time
+Take my hand
+let's have a blast
+And remember this moment for the rest of our lives
+Our lives
+Oh, oh, oh, oh,
+Tonight, tonight, tonight 
+'Cause tonight's the night
+Am I right?
+Dance
+^C
+
+ls -la											16. Вывести список всех файлов в папке.
+итого 20
+drwxrwxr-x 2 karina karina 4096 апр 14 20:37 .
+drwxrwxr-x 3 karina karina 4096 апр 14 20:19 ..
+-rw-rw-r-- 1 karina karina   54 апр 14 20:28 tf_3.txt
+-rw-rw-r-- 1 karina karina  394 апр 14 20:37 tf_4.txt
+-rw-rw-r-- 1 karina karina  268 апр 14 20:42 tf_5.txt
+cd ..											 17. Выйти из папки inner_dir_1
+
+cat inner_dir_1/tf_3.txt								18. Вывести содержимое файла tf_3.txt в терминал.
+qwer
+asd
+zcxc
+cxz
+the second 2
+the sec 2
+the SeCoNd 2
+
+find . -name tf_4.txt									19. Найти путь к файлу tf_4.txt
+./inner_dir_1/tf_4.txt
+> tf_4.txt										20. Отчистить файл tf_4.txt от содержимого без удаления самого файла.
+
+find . -name 'tf_*'									 21. Найти путь к файлам у которых есть  “tf” в названии			
+./inner_dir_1/tf_3.txt
+./inner_dir_1/tf_4.txt
+./inner_dir_1/tf_5.txt
+./tf_2.txt
+./tf_1.txt
+
+find . -iname 'tf_*'									22. Найти путь к файлам у которых есть  “tf” в названии и буквы в любом регистре.
+./inner_dir_1/tf_3.txt
+./inner_dir_1/tf_4.txt
+./inner_dir_1/tf_5.txt
+./tf_2.txt
+./tf_1.txt
+grep sec *										23. Найти строки в файлах где есть комбинация букв “sec” в текущей папке
+grep: inner_dir_1: Это каталог
+tf_2.txt:- the second 2
+tf_2.txt:the sec 3
+grep -r -i sec *									24. Найти строки в файлах где есть комбинация букв “sec” в любом регистре в текущей папке
+inner_dir_1/tf_3.txt:the second 2
+inner_dir_1/tf_3.txt:the sec 2
+inner_dir_1/tf_3.txt:the SeCoNd 2
+tf_2.txt:- the second 2
+tf_2.txt:the sec 3
+tf_2.txt:he seConD 2
+grep -w sec *										 24. Найти строки в файлах где есть комбинация букв “sec” в любом регистре в текущей папке
+grep: inner_dir_1: Это каталог
+tf_2.txt:the sec 3
+grep -w -i sec *									 26. Найти строки в файлах где есть только комбинация букв “sec” в любом регистре в текущей папке
+grep: inner_dir_1: Это каталог
+tf_2.txt:the sec 3
+
+grep second *										 27. Найти строки в файлах где есть комбинация букв “second” в текущей папке
+grep: inner_dir_1: Это каталог
+tf_2.txt:- the second 2
+grep -i second *									28. Найти строки в файлах где есть комбинация букв “second” в любом регистре в текущей папке
+grep: inner_dir_1: Это каталог
+tf_2.txt:- the second 2
+tf_2.txt:he seConD 2						
+grep -r second *									 29. Найти строки в файлах где есть комбинация букв “second” во всех папках ниже уровнем							
+inner_dir_1/tf_3.txt:the second 2	
+tf_2.txt:- the second 2
+grep -r-l second *									30. Найти только путь и название файла в строках которых есть комбинация букв “second” в текущей папке								
+inner_dir_1/tf_3.txt	
+
+grep -r -v  second *									31. Найти все строки во всех файлах где нет комбинации “second”
+inner_dir_1/tf_3.txt:qwer
+inner_dir_1/tf_3.txt:asd
+inner_dir_1/tf_3.txt:zcxc
+inner_dir_1/tf_3.txt:cxz
+inner_dir_1/tf_3.txt:the SeCoNd 2
+inner_dir_1/tf_5.txt:And we danced 
+inner_dir_1/tf_5.txt: and we cried
+inner_dir_1/tf_5.txt:And we laughed 
+inner_dir_1/tf_5.txt:and had a really, really, really good time
+inner_dir_1/tf_5.txt:Take my hand
+inner_dir_1/tf_5.txt:let's have a blast
+inner_dir_1/tf_5.txt:And remember this moment for the rest of our lives
+inner_dir_1/tf_5.txt:Our lives
+inner_dir_1/tf_5.txt:Oh, oh, oh, oh,
+inner_dir_1/tf_5.txt:Tonight, tonight, tonight
+inner_dir_1/tf_5.txt:'Cause tonight's the night
+inner_dir_1/tf_5.txt:Am I right?
+inner_dir_1/tf_5.txt:Dance
+tf_2.txt:- the first 1
+tf_2.txt:- the third 3
+tf_2.txt:the sec 3
+tf_2.txt:he seConD 2
+
+grep -r -v -l second *									32. Найти только название и путь к файлам где нет комбинации “second”
+dir_2/tf_6.txt
+inner_dir_1/tf_4.txt
+inner_dir_1/tf_5.txt
+inner_dir_1/tf_1.txt
+
+tail -n4 inner_dir_1/tf_5.txt								 33. Вывести в терминал 4 последних строк любого текстового файла
+Tonight, tonight, tonight
+'Cause tonight's the night
+Am I right?
+Dance
+head -n4 inner_dir_1/tf_5.txt								 34. Вывести в терминал 4 первые строки любого текстового файла.
+And we danced 
+ and we cried
+And we laughed 
+and had a really, really, really good time
+
+mkdir dir_2; cd dir_2/; cat >tf_6.txt							 35. Команда в одну строку. Создать папку и создать текстовый файл с содержиммым.
+123456
+12334567
+asdf
+qwert
+asdf
+^C
+mv $(grep -r sec * -l) dir_2/								 36. Команда в одну строку. Переместить в любую одну папку текстовые файлы у которых в содержимом есть слово “sec”
+
+cp $(grep -r sec * -l) inner_dir_1/							 37. Команда в одну строку. Скопировать в любую одну папку текстовые файлы у которых в содержимом есть слово “sec”		
+				
+cat <(grep -r -h "sec*") > tf_8.txt							 38. Команда в одну строку. Найти все строки c “sec” во всех текстовых файлах, скопировать и вставить эти строки в один новый созданный текстовый файл.	
+
+rm $(grep -r -l "sec *")								39. Команда в одну строку. Удалить текстовые файлы у которых в содержимом есть слово “sec”
+
+echo "Good Job!"									40. Просто вывести в терминал строку “Good job!!”
+Good Job!
+
+
